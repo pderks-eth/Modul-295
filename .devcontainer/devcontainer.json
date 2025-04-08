@@ -1,0 +1,14 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+	"name": "üK Modul 295 Node.js project",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+  "remoteUser": "node",
+  "forwardPorts": [3000],
+    "portsAttributes": {
+        "3000": {
+	    "visibility": "public"
+	}
+  }
+}

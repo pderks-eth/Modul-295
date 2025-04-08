@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<website>
+    <header>
+        <title>My Website</title>
+        <logo>logo.png</logo>
+        <navigation>
+            <link href="index.html">Home</link>
+            <link href="about.html">About</link>
+            <link href="contact.html">Contact</link>
+        </navigation>
+    </header>
+    <main>
+        <section id="welcome">
+            <heading>Welcome to My Website</heading>
+            <content>This is a sample website created using XML.</content>
+        </section>
+        <section id="features">
+            <heading>Features</heading>
+            <feature>Easy to use</feature>
+            <feature>Responsive design</feature>
+            <feature>Customizable</feature>
+        </section>
+    </main>
+    <footer>
+        <contact>Email: info@mywebsite.com</contact>
+    </footer>
+</website>

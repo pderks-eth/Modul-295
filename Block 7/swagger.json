@@ -1,0 +1,425 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Bibliothek API",
+    "description": "API-Dokumentation für Books und Lends",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Books",
+      "description": "Bücher verwalten"
+    },
+    {
+      "name": "Lends",
+      "description": "Ausleihen verwalten"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "description": "Login-Endpoint",
+        "parameters": [
+          {
+            "name": "email",
+            "description": "E-Mail",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "description": "Passwort",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login erfolgreich"
+          },
+          "401": {
+            "description": "Login fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "delete": {
+        "tags": [
+          "Login"
+        ],
+        "description": "Logout-Endpoint",
+        "responses": {
+          "204": {
+            "description": "Logout erfolgreich"
+          },
+          "500": {
+            "description": "Logout fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "/verify": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "description": "Überprüft, ob der Benutzer authentifiziert ist",
+        "responses": {
+          "200": {
+            "description": "Benutzer ist authentifiziert"
+          },
+          "401": {
+            "description": "Benutzer ist nicht authentifiziert"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Gibt alle Bücher zurück",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Fügt ein neues Buch hinzu",
+        "parameters": [
+          {
+            "name": "book",
+            "description": "Buch-Objekt",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "isbn": {
+                  "example": "any"
+                },
+                "title": {
+                  "example": "any"
+                },
+                "year": {
+                  "example": "any"
+                },
+                "author": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Buch erfolgreich hinzugefügt"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      }
+    },
+    "/books/{isbn}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Gibt ein Buch zurück",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ISBN des Buches"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Buch gefunden"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "404": {
+            "description": "Buch nicht gefunden"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Aktualisiert ein Buch",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ISBN des Buches"
+          },
+          {
+            "name": "book",
+            "description": "Aktualisiertes Buch-Objekt",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Buch erfolgreich aktualisiert"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "404": {
+            "description": "Buch nicht gefunden"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Löscht ein Buch",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ISBN des Buches"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Buch erfolgreich gelöscht"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "404": {
+            "description": "Buch nicht gefunden"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Aktualisiert ein Buch",
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ISBN des Buches"
+          },
+          {
+            "name": "book",
+            "description": "Aktualisiertes Buch-Objekt",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Buch erfolgreich aktualisiert"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "404": {
+            "description": "Buch nicht gefunden"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      }
+    },
+    "/lends": {
+      "get": {
+        "tags": [
+          "Lends"
+        ],
+        "description": "Gibt alle Ausleihen zurück",
+        "responses": {
+          "200": {
+            "description": "Ausleihen gefunden"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Lends"
+        ],
+        "description": "Fügt eine neue Ausleihe hinzu",
+        "parameters": [
+          {
+            "name": "lend",
+            "description": "Ausleih-Objekt",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "isbn": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Ausleihe erfolgreich hinzugefügt"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Buch ist bereits ausgeliehen"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      }
+    },
+    "/lends/{id}": {
+      "get": {
+        "tags": [
+          "Lends"
+        ],
+        "description": "Gibt eine Ausleihe zurück",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID der Ausleihe"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ausleihe gefunden"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Ausleihe nicht gefunden"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Lends"
+        ],
+        "description": "Löscht eine Ausleihe",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID der Ausleihe"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ausleihe erfolgreich gelöscht"
+          },
+          "400": {
+            "description": "Ungültige Anfrage"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Ausleihe nicht gefunden"
+          },
+          "500": {
+            "description": "Interner Serverfehler"
+          }
+        }
+      }
+    }
+  }
+}

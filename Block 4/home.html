@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    <ul>
+        <li><a href="/now">Current Date and Time</a></li>
+        <li><a href="/now?tz=Europe/Zurich">Current Date and Time Zurich</a></li>
+        <li><a href="#" id="toggleForm">Add Name</a></li>
+        <form id="nameForm" style="display: none;" action="/names" method="POST">
+            <input type="text" name="name" placeholder="Name eingeben" required>
+            <button type="submit">Hinzufügen</button>
+        </form>
+
+        <script>
+            document.getElementById('toggleForm').addEventListener('click', function(event) {
+            event.preventDefault();
+            const form = document.getElementById('nameForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            });
+        </script>
+
+        <li><a href="/secret">Secret (403 Forbidden)</a></li>
+    </ul>
+</body>
+</html>
