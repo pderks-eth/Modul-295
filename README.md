@@ -1,6 +1,6 @@
-# Barebones Node.js Application
+# Modul-925 Node.js Application
 
-A simple, minimal Node.js application that serves as a starting point for your projects.
+ÜK Modul 295
 
 ## Technologies Used
 
@@ -19,9 +19,12 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/barebones-nodejs.git
-cd barebones-nodejs
+git clone https://github.com/pderks-eth/Modul-295.git
+cd Modul-295
 ```
+### 1.1 Open in Dev Contianer (Optional)
+- Make sure you have `Dev Containers` Extension installed.
+- Press `CTRL` + `SHIFT` + `P` and type `Dev Containers: Reopen in Dev Container`.
 
 ### 2. Install dependencies
 
@@ -29,10 +32,18 @@ cd barebones-nodejs
 npm install
 ```
 
-### 3. Run the application
-
+## Run Application
+To run the application:
 ```bash
-npm start
+node index.js
+```
+
+To run the application (with automatic restarting):
+```bash
+npm install nodemon
+```
+```bash
+nodemon index.js
 ```
 
 The application should now be running on [http://localhost:3000](http://localhost:3000) (or another port specified in your configuration).
@@ -40,22 +51,10 @@ The application should now be running on [http://localhost:3000](http://localhos
 ## Project Structure
 
 ```
-barebones-nodejs/
+Modul-295/
 ├── node_modules/
 ├── package.json
 ├── package-lock.json
 ├── index.js
 └── README.md
 ```
-
-## Development
-
-To run the application in development mode with automatic restarting:
-
-```bash
-npm run dev
-```
-
-## License
-
-[MIT](LICENSE)
